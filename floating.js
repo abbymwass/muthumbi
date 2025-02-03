@@ -71,7 +71,7 @@ const botResponses = {
 // Function to open WhatsApp chat instead of chatbot window
 function toggleChat() {
   // Replace '2547XXXXXXXX' with your actual WhatsApp number (use international format without '+')
-  window.location.href = "https://wa.me/254720502640";
+  window.location.href = "https://wa.me/254725596227";
 }
 
 // Send Message Function (if chatbot mode is enabled later)
