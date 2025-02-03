@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Assistant</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Chat Assistant</h1>
+        <p>How can I help you today? Feel free to ask any questions.</p>
+    </header>
+
+    <main>
+        <div id="chat-container">
+            <div id="chat-box"></div>
+            <form id="chat-form">
+                <input type="text" id="user-input" placeholder="Type your message..." required>
+                <button type="submit">Send</button>
+            </form>
+            <button id="not-satisfied-btn">Not Satisfied?</button>
+        </div>
+        <!-- Video Chat Section -->
+<div id="video-container">
+    <video id="user-video" autoplay playsinline></video>
+    <video id="admin-video" autoplay playsinline></video>
+    <button id="join-call">Join Video Call</button>
+</div>
+
+    </main>
+
+    <script>
+        // WebSocket setup
+        const socket = new WebSocket("ws://localhost:3000");
+
+        socket.onopen = () => console.log("Connected to server");
+        socket.onmessage = (event) => appendMessage("assistant", event.data);
+        socket.onerror = (error) => console.error("WebSocket error:", error);
+        socket.onclose = () => console.log("WebSocket closed");
+
+        // Selecting elements
+        const chatForm = document.getElementById("chat-form");
+        const userInput = document.getElementById("user-input");
+        const chatBox = document.getElementById("chat-box");
+        const notSatisfiedBtn = document.getElementById("not-satisfied-btn");
+
+        // Send message to WebSocket server
+        chatForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const userMessage = userInput.value.trim();
+            if (userMessage) {
+                appendMessage("user", userMessage);
+                userInput.value = "";
+                socket.send(userMessage);
+            }
+        });
+
+        // Append messages to chat window
+        function appendMessage(sender, text) {
+            const messageDiv = document.createElement("div");
+            messageDiv.classList.add("message", sender);
+            messageDiv.textContent = text;
+            chatBox.appendChild(messageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        // Handle "Not Satisfied?" button
+        notSatisfiedBtn.addEventListener("click", () => {
+            const userMessage = prompt("Please describe the issue:");
+
+            if (userMessage) {
+                fetch("http://localhost:3000/notify", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        userEmail: "client@example.com", // Replace with user's email
+                        userMessage: userMessage,
+                    }),
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.success) {
+                        alert("Admin has been notified. They will join shortly.");
+                    } else {
+                        alert("Failed to send notification.");
+                    }
+                })
+                .catch((error) => console.error("Error:", error));
+            }
+        });
+
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Assistant</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Chat Assistant</h1>
+        <p>How can I help you today? Feel free to ask any questions.</p>
+    </header>
+
+    <main>
+        <div id="chat-container">
+            <div id="chat-box"></div>
+            <form id="chat-form">
+                <input type="text" id="user-input" placeholder="Type your message..." required>
+                <button type="submit">Send</button>
+            </form>
+            <button id="not-satisfied-btn">Not Satisfied?</button>
+        </div>
+    </main>
+
+    <script>
+        // WebSocket setup
+        const socket = new WebSocket("ws://localhost:3000");
+
+        socket.onopen = () => console.log("Connected to server");
+        socket.onmessage = (event) => appendMessage("assistant", event.data);
+        socket.onerror = (error) => console.error("WebSocket error:", error);
+        socket.onclose = () => console.log("WebSocket closed");
+
+        // Selecting elements
+        const chatform = document.getElementById("chat-form");
+        const userinput = document.getElementById("user-input");
+        const chatbox = document.getElementById("chat-box");
+        const notsatisfiedBtn = document.getElementById("not-satisfied-btn");
+
+        // Send message to WebSocket server
+        chatForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const userMessage = userInput.value.trim();
+            if (userMessage) {
+                appendMessage("user", userMessage);
+                userInput.value = "";
+                socket.send(userMessage);
+            }
+        });
+
+        // Append messages to chat window
+        function appendMessage(sender, text) {
+            const messageDiv = document.createElement("div");
+            messageDiv.classList.add("message", sender);
+            messageDiv.textContent = text;
+            chatBox.appendChild(messageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        // Handle "Not Satisfied?" button
+        notSatisfiedBtn.addEventListener("click", () => {
+            const userMessage = prompt("Please describe the issue:");
+
+            if (userMessage) {
+                fetch("http://localhost:3000/notify", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        userEmail: "client@example.com", // Replace with user's email
+                        userMessage: userMessage,
+                    }),
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.success) {
+                        alert("Admin has been notified. They will join shortly.");
+                    } else {
+                        alert("Failed to send notification.");
+                    }
+                })
+                .catch((error) => console.error("Error:", error));
+            }
+        });
+
+    </script>
+    <script src="server.js"></script>
+</body>
+</html>

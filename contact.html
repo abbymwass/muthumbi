@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact me</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<!-- Contact Section -->
+<section id="contact">
+    <h1>Let's Talk</h1>
+   
+    <form action="mailto:robert,njoroge.muthumbi@gmail.com" method="post" enctype="text/plain">
+        <div class="input-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        </div>
+        <div class="input-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        </div>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send</button>
+    </form>
+    <!-- <button id="chat-toggle">Let's Talk</button> -->
+</section>
+<script src="chat.js"></script>
+</body>
+</html>

@@ -12,6 +12,7 @@
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
     <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet"href="floating.css"/> -->
     <title>Web Design Mastery |Robert Njoroge</title>
   </head>
   <body>
@@ -26,10 +27,21 @@
         <li><a href="#intro">Intro</a></li>
         <li><a href="#service">Services</a></li>
         <li><a href="#blog">Blog</a></li>
+        <!-- <li><a href="#contact">Let's Talk</a></li> -->
+        <!-- <li><a href="/portfolio">My work</a></li> -->
+        <!-- <li><a href="floating.html">Contact Me</a></li> -->
+
+
+
+
       </ul>
-      <div class="nav__btns">
-        <button class="btn">Hire Me</button>
+      <!-- <div class="nav__btns">
+        <a href="chat.html"class="btn">Let's Talk</a> -->
       </div>
+      <div class="nav__btns">
+        <a href="contact.html"class="btn">Contact Me</a>
+      </div>
+     
     </nav>
 
     <header id="home">
@@ -41,14 +53,56 @@
           <p>
           I oversee the development team,ensuring code quality,guiding technical direction,managing architecture,strategic planning and meeting both  functional and non-functional requirements
           </p>
-          <div class="header__btns">
+          <!-- <div class="header__btns">
             <a href="images/Robert_Muthumbi_Resume_2 (1).pdf" download class="btn btn2">Download CV</a>
-          </div>
+          </div> -->
         </div>
+
         <div class="header__image">
           <img src="images/robertoo.jpg" alt="header" />
         </div>
       </div>
+      <!-- <section class="section__container intro__container" id="intro">
+        <div class="intro__image">
+          <img src="images/robertoo.jpg" alt="intro" />
+        </div>
+        <div class="contact__content">
+          <p class="section__subheader">contact me</p>
+          <h2 class="section__header">Contact Me</h2>
+          <p class="contact__description">
+       -->
+       <!-- <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="nav__btns">
+          <a href="contact.html"class="btn">Contact Me</a>
+        </div> -->
+       
+        <!-- <form action="mailto:your-email@example.com" method="post" enctype="text/plain">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Send</button>
+        </form> -->
+        <!-- <button id="chat-toggle">Let's Talk</button> -->
+        <!----chat modal-->
+        <div id="chat-modal" style="display:none;">
+          <div id="chat-header">
+            <h2>Chat Assistant</h2>
+            <button id="close-chat">X</button>
+          </div>
+          <div id="chat-box"></div>
+          <form id="chat-form">
+            <input type="text"id="chat-input"placeholder="Type your message..."required />
+            <button type="submit">Send</button>
+          </form>
+        </div> 
+          </section>
     </header>
 
     <section class="section__container intro__container" id="intro">
@@ -59,8 +113,11 @@
         <p class="section__subheader">My Intro</p>
         <h2 class="section__header">About Me</h2>
         <p class="intro__description">
-        I'm an amenable software Engineer gifted at translating basic client requirements into technical development plans.
-        I'm good at communicating with clients with both technical and non-techical personnels and clients,to add on top of it,i master new technicals that work fast pace to meet tight deadlines.Enthuastic team player ready to contribute to company's success. 
+        I'm an amenable software Engineer gifted at translating basic client requirements into technical development plans and projects.
+        I bring 15years of experience in solutions deployment(CI/CD),Software development,Cloud solutions,Programming languages,Prototyping,Web Analytics,Project management and Microservices architecture designs.</p>
+        <p>
+          My mission is to help business and organisations achieve their goals through effective and efficient web development solutions.
+        I'm good at communicating with clients ; both technical and non-techical personnels and to add on it,i master new technicals that work fast pace to meet tight deadlines.Enthuastic team player ready to contribute to company's success. 
         </p>
         <div class="intro__grid">
           <h5>
@@ -172,13 +229,13 @@
           </div>
           <div class="journey__card">
             <span><i class="ri-circle-fill"></i></span>
-            <div>
+            <!-- <div>
               <h4>High School Diploma</h4>
               <h5>Upper Hill High School</h5>
               <p>
                 <span><i class="ri-calendar-fill"></i></span> 1998-2001
               </p>
-            </div>
+            </div> -->
           </div>
           <div class="journey__card">
             <span><i class="ri-circle-fill"></i></span>
@@ -306,7 +363,7 @@
       </div>
       <div class="nav__btns">
         <!-- <button class="btn">Contact Me</button> -->
-        <a href="images/Robert_Muthumbi_Resume_2 (1).pdf" download class="btn btn2">Contact Me</a>
+        <a href="images/Robert_Muthumbi_Resume_2 (1).pdf" download class="btn btn2">Download cv</a>
       </div>
       <!-- <div class="banner__image">
         <img src="images/banner.jpg" alt="banner" />
@@ -343,6 +400,17 @@
         </div>
       </div>
     </section>
+   <!-- title 2</h3>
+        <p>short des <section id="portfolio">
+      <h2>Portfolio</h2>
+      <div class="project">
+        <h3>Project Title 1</h3>
+        <p> short description of the projecr</p>
+      </div>
+      <div class="project">
+        <h3>project cription of the project</p>
+      </div> -->
+    </section>
 
     <footer>
       <div class="section__container footer__container">
@@ -356,11 +424,92 @@
       <div class="footer__bar">
         Copyright © Mr.Robert Mastery. <i class="ri-user-heart-fill"></i>All rights reserved.
       </div>
+      <!---floating chat button-->
+      <!-- <div id="chat-icon" onclick="togglechat()"> -->
+        <a href="https://wa.me/254713258583" id="chatButton" target="_blank">
+          <i class="ri-whatsapp-fill"></i>
+          
+          <button class="floating-btn">chat</button>
+      </a>
+        <div id="floatingCointainer"></div>
+        <!-- <div id="chat-icon" onclick="toggleChat()"> -->
+          💬
+  
+    </div>
+    <!---chat window-->
+    <div id="chat-window">
+        <header>floatlive Chat</header>
+        <main id="chat-message"></main>
+        <footer>
+            <input type="text" id="chat-input"placeholder="Type your message..."onkeypress="sendMessage(event)">
+            <button onclick="sendMessage()">Send</button>
+        </footer>
+    </div>
     </footer>
+    <!-- <a href="floating.html">contact me</a>
+    <link rel="stylesheet" href="floating.css"> -->
+    <script>
+    // Dynamically load floating.html into index.html
+    fetch("floating.html")
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById("floatingContainer").innerHTML = html;
+            })
+            .catch(error => console.error("Error loading floating.html:", error));
+
+      // Toggle Chat Window
+function toggleChat() {
+  const chatWindow = document.getElementById("chat-window");
+  chatWindow.style.display =
+    chatWindow.style.display === "none" || chatWindow.style.display === ""
+      ? "flex"
+      : "none";
+}
+
+// Send Message
+function sendMessage(event) {
+  // Check if 'Enter' was pressed or the Send button was clicked
+  if (event.type === "keypress" && event.key !== "Enter") return;
+
+  const input = document.getElementById("chat-input");
+  const messages = document.getElementById("chat-messages");
+
+  if (input.value.trim() !== "") {
+    // Add user message to chat
+    const userMessage = document.createElement("div");
+    userMessage.style.margin = "5px 0";
+    userMessage.style.padding = "8px";
+    userMessage.style.borderRadius = "8px";
+    userMessage.style.backgroundColor = "#e1f0ff";
+    userMessage.style.alignSelf = "flex-end";
+    userMessage.textContent = input.value;
+    messages.appendChild(userMessage);
+
+    // Simulate a bot response after a delay
+    setTimeout(() => {
+      const botMessage = document.createElement("div");
+      botMessage.style.margin = "5px 0";
+      botMessage.style.padding = "8px";
+      botMessage.style.borderRadius = "8px";
+      botMessage.style.backgroundColor = "#f0f0f0";
+      botMessage.style.alignSelf = "flex-start";
+      botMessage.textContent = "Thank you for your message!";
+      messages.appendChild(botMessage);
+      messages.scrollTop = messages.scrollHeight; // Auto-scroll to bottom
+    }, 1000);
+
+    input.value = ""; // Clear input
+    messages.scrollTop = messages.scrollHeight; // Auto-scroll to bottom
+  }
+}
+    </script>
+
 
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
+    <script src="chatsRoutes.js"></script>
+    <script src="floating.js"></script>
   </body>
 </html>

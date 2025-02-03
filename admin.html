@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Chat Logs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+  <h1>Chat Logs</h1>
+</header>
+<main>
+    <input type="text"id="searchBar"placeholder="Search chats..."oninput="filterchats()">
+    <div id="chat-logs"></div>
+</main>
+<!----Chat logs Container-->
+<div id="chat-logs"></div>
+<script>
+    fetch('https://localhost:5000/api/chats')
+    .then(response =>response.json())
+    .then(data =>{
+        // if(data.sucess){
+            const logs=document.getElementById("chat-logs");
+            logs.innerHTML="";//clear existing logs
+            data.chats.forEach(chat =>{
+                const log =document.createElement("p");
+                log.className=chat.sender.toLowerCase();//Set class based on sender
+                log.textContent=`[${newDate(chat.timestamp).toLocaleString()}] $
+                {chat.sender}:${chat.message}`;
+                logs.appendChild(log);
+            });
+            
+        })
+    .catch(err => {
+        console.error("Error fechting chats:",err);
+    const logs=document.getElementById("chat-log");
+    logs.innerHTML="<p>Unable to load chat logs.Please try again later.</p>";
+    });
+
+    //Filter chats based in search input
+    function filterChats(){
+        const searchValue=document.getElementById("searchBar").value.toLowerCase();
+        const chatLogs=document.querySelectorAll("#chat-logs p");//Get all chat logs
+        
+
+        chatLogs.forEach(chat=>{
+            const text=chat.textContent.toLowerCase();
+            if(text.includes(searchValue)){
+                chat.style.display="block";
+            }else{
+                chat.style.display="none";
+            }
+        });
+    }
+</script>
+</body>
+</html>
